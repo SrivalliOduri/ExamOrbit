@@ -39,26 +39,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
     super.dispose();
   }
 
-  Future<void> _loadQuote() async {
+  
+Future<void> _loadQuote() async {
+  setState(() {
+    _quoteLoading = true;
+    _quoteError = null;
+  });
+
+  try {
+    final quote = await _quoteService.fetchRandomQuote();
+
+    if (!mounted) return;
+
     setState(() {
-      _quoteLoading = true;
+      _quote = quote;
+      _quoteLoading = false;
       _quoteError = null;
     });
-    try {
-      final quote = await _quoteService.fetchRandomQuote();
-      if (!mounted) return;
-      setState(() {
-        _quote = quote;
-        _quoteLoading = false;
-      });
-    } on QuoteException catch (error) {
-      if (!mounted) return;
-      setState(() {
-        _quoteError = error.message;
-        _quoteLoading = false;
-      });
-    }
+  } catch (error) {
+    if (!mounted) return;
+
+    setState(() {
+      _quoteError = null;
+      _quoteLoading = false;
+    });
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
