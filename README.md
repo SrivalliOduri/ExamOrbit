@@ -98,3 +98,16 @@ examorbit/
 
 - The dashboard quote comes from the public ZenQuotes API (`https://zenquotes.io/api/random`) and needs an internet connection. The rest of the app works offline.
 - Data lives on the device where you use the app. Use Settings, then Reset data, to clear it.
+## 📸 Application Screenshots
+
+### 1. Dashboard
+![ExamOrbit Dashboard](screenshots/dashboard.png)
+
+### 2. Subjects
+![ExamOrbit Subjects](screenshots/subjects.png)
+
+### 3. Focus Timer
+![ExamOrbit Focus Timer](screenshots/focus-timer.png)
+
+### 4. Settings
+![ExamOrbit Settings](screenshots/settings.png)
